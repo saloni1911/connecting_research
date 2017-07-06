@@ -1,8 +1,7 @@
      
 require 'sinatra'
-require 'sinatra'
-require 'sinatra/reloader'
-require 'pry'
+# require 'sinatra/reloader'
+# require 'pry'
 #require 'sendgrid-ruby'
 require 'pg'
 #include SendGrid
