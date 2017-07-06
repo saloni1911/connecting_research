@@ -19,6 +19,13 @@
 
 <a href="/edit">Edit Profile</a><br>
 
+<% if logged_in? %>
+<form action="/users/<%= @user['id'] %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<button>Delete</button>
+</form>
+<% end %>
+
 <form action="/search">
 	<h3>Search Publications</h3>
 
