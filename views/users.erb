@@ -1,0 +1,37 @@
+<h1>Profile</h1>
+
+	<h2>Name: <%= @user['name'] %></h2>
+	<h2>Email Address: <%= @user['email'] %></h2>
+	<h2>Location: <%= @user['location'] %></h2>
+	<h2>Degree: <%= @user['degree'] %></h2>
+	<h2>Research Institute: <%= @user['research_institute'] %></h2>
+	<h2>Research Field: <%= @user.research_field_name %></h2>
+
+	<h2>Publications:</h2>
+	<% if @publications %>
+		<% @publications.each do |publication| %>
+		<ul><li>	<a href="<%= publication['url'] %>"><%= publication['title'] %></a>
+			<p><%= publication['authors'] %>  <%= publication['journal_name'] %>, <%= publication['publication_date'] %></p></li> </ul>
+		<% end %>
+	<% end %>
+
+<a href="/addpublications">Add publications</a><br>
+
+<a href="/edit">Edit Profile</a><br>
+
+<form action="/search">
+	<h3>Search Publications</h3>
+
+	<label for="">Research Field</label>
+ 	<select name="research_field_id" id="">
+		<% @research_fields.each do |research_field| %>
+		<option value="<%= research_field.id %>"><%= research_field.name %></option>
+		<% end %>
+	</select> <br>
+
+	<label for=''>Keywords</label>
+	<input type="text" name="keywords">
+
+	<button>Search</button>
+</form>
+

@@ -1,0 +1,29 @@
+<form action="/users" method="post">
+
+	<label for=''>Name</label>
+	<input type="text" name="name"><br>
+
+	<label for="">Email</label>
+	<input type="text" name="email"><br>
+
+	<label for=''>Password</label>
+	<input type="password" name="password"><br>
+
+	<label for=''>Location</label>
+	<input type="text" name="location"><br>
+
+	<label for="">Degree</label>
+	<input type="text" name="degree"><br>
+
+	<label for=''>Research Institute</label>
+	<input type="text" name="research_institute"><br>
+
+	<label for="">Research Field</label>
+ 	<select name="research_field_id" id="">
+		<% @research_fields.each do |research_field| %>
+		<option value="<%= research_field.id %>"><%= research_field.name %></option>
+		<% end %>
+	</select> <br>
+	
+	<button>Create Account</button>
+</form>

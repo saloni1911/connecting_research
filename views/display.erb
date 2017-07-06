@@ -1,0 +1,30 @@
+<h1>Profile</h1>
+
+	<h2>Name: <%= @user['name'] %></h2>
+	<h2>Email Address: <%= @user['email'] %></h2>
+	<h2>Location: <%= @user['location'] %></h2>
+	<h2>Degree: <%= @user['degree'] %></h2>
+	<h2>Research Institute: <%= @user['research_institute'] %></h2>
+	<h2>Research Field: <%= @user.research_field_name %></h2>
+
+<h3>Publications</h3>
+	<% @publications.each do |publication| %>
+		<ul> <li><a href="<%= publication['url'] %>"><%= publication['title'] %></a>
+		<p><%= publication['authors'] %>  <%= publication['journal_name'] %>, <%= publication['publication_date'] %></p></li></ul>
+<% end %>
+
+	<form action="/comments" method="post">
+		<label for="">Comment</label><br>
+		<textarea name="body"></textarea> 
+		<button>Post</button> 
+	</form>
+
+<form action="/messages">
+	<h4>Send Personalised messages to author</h4>
+	<label for=''>Subject</label>
+	<input type="text" name="subject"><br>
+
+	<label for=''>Message</label><br>
+	<textarea name="content"></textarea> <br>
+	<button>Send</button>
+</form>

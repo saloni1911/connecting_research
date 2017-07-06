@@ -1,0 +1,10 @@
+<h2>Search results</h2>
+<% if @publications %>
+	<% @publications.each do |publication| %>
+		<h2>Publications matched: <a href="<%= publication['url'] %>"><%= publication['title'] %></a></h2> <h2>published by
+		<a href="/users/<%= publication.user.id %>"><%= publication.user.name %></a></h2>
+		<hr>
+	<% end %>
+<% else %>
+<h2>No Match found</h2>
+<% end %>
