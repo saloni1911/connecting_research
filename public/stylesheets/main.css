@@ -1,0 +1,139 @@
+body {
+	/*background-color: #c4ddb3 #a4c993 #97a05d mistyrose;*/ 
+	background-color: #c4ddb3;
+
+}
+
+.scheme {
+	background-image: url("http://www.sciencemag.org/sites/default/files/styles/article_main_large/public/custom-publishing/3-Feb-Tech-Lead.jpg?itok=PTz3gLqV");
+}
+
+.button {
+	padding: 15px 25px;
+	background: #0d6b32;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px black;
+  text-decoration-line: none;
+  clear: both;
+  margin-right: 30px;
+}
+
+#main {
+	margin-top: 65px;
+	float: right;
+}
+
+.h {
+	margin-bottom: 40px;
+}
+
+.control {
+	float: right;
+	font-family: serif;
+	font-size: 25px;
+}
+
+#log {
+	float: right;
+	margin-top: 0;
+	font-family: serif;
+	font-size: 20px;
+	background: #1bc15d;
+}
+
+label {
+color: #b16517;
+font-weight: bold;
+display: inline-block;
+width: 200px;
+padding-bottom: 30px;
+font-size: 30px;
+margin-right: 20px;
+}
+
+input[type=text], {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+    border: 2px solid green;
+    border-radius: 4px;
+}
+
+input[type=password] {
+    border: 2px solid green;
+    border-radius: 4px;
+}
+
+textarea[name] {
+    border: 2px solid green;
+    border-radius: 4px;
+}
+
+.h2 {
+	font-size: 30px;
+	font-weight: bold;
+	color: #420c11;
+	margin: 15px;
+	clear: both;
+}
+
+#user {
+	font-size: 25px;
+	color: #a90642;
+}
+
+.publish {
+	font-size: 20px;
+}
+
+#tog {
+	padding: 8px 18px;
+	background: #4a1414;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px black;
+  text-decoration-line: none;
+  clear: both;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+#btn {
+	padding: 8px 18px;
+	background: #0d6b32;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px black;
+  text-decoration-line: none;
+  clear: both;
+  margin-bottom: 15px;
+  display: inline;
+  float: left;
+}
+
+div {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+

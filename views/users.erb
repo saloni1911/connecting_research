@@ -1,44 +1,50 @@
 <h1>Profile</h1>
 
-	<h2>Name: <%= @user['name'] %></h2>
-	<h2>Email Address: <%= @user['email'] %></h2>
-	<h2>Location: <%= @user['location'] %></h2>
-	<h2>Degree: <%= @user['degree'] %></h2>
-	<h2>Research Institute: <%= @user['research_institute'] %></h2>
-	<h2>Research Field: <%= @user.research_field_name %></h2>
-
-	<h2>Publications:</h2>
-	<% if @publications %>
-		<% @publications.each do |publication| %>
-		<ul><li>	<a href="<%= publication['url'] %>"><%= publication['title'] %></a>
-			<p><%= publication['authors'] %>  <%= publication['journal_name'] %>, <%= publication['publication_date'] %></p></li> </ul>
-		<% end %>
-	<% end %>
-
-<a href="/addpublications">Add publications</a><br>
-
-<a href="/edit">Edit Profile</a><br>
+<a id="btn" href="/edit">Edit Profile</a><br>
 
 <% if logged_in? %>
 <form action="/users/<%= @user['id'] %>" method="post">
 	<input type="hidden" name="_method" value="delete">
-	<button>Delete</button>
+	<button id="btn">Delete Profile</button>
 </form>
 <% end %>
 
-<form action="/search">
-	<h3>Search Publications</h3>
+	<h2 class="h2">Name: <span id="user"><%= @user['name'] %></span></h2>
+	<h2 class="h2">Email Address: <span id="user"><%= @user['email'] %></span></h2>
+	<h2 class="h2">Location: <span id="user"><%= @user['location'] %></span></h2>
+	<h2 class="h2">Degree: <span id="user"><%= @user['degree'] %></span></h2>
+	<h2 class="h2">Research Institute: <span id="user"><%= @user['research_institute'] %></span></h2>
+	<h2 class="h2">Research Field: <span id="user"><%= @user.research_field_name %></span></h2>
 
-	<label for="">Research Field</label>
- 	<select name="research_field_id" id="">
+	<h2 class="h2">Publications:</h2>
+	<% if @publications %>
+		<% @publications.each do |publication| %>
+		<ul><li class="publish">	<a href="<%= publication['url'] %>"><%= publication['title'] %></a> <%= publication['authors'] %>.  <%= publication['journal_name'] %>, <%= publication['publication_date'] %>.</li> </ul>
+		<% end %>
+	<% end %>
+
+<a id="tog" href="/addpublications">Add publications</a><br>
+
+<h2>Comments:</h2>
+	<% @comments.each do |comment| %>
+	<ul> <li><%= comment['body'] %></li></ul>
+	<% end %>
+<hr>
+
+
+<form action="/search">
+	<h2 class="h2">Search Publications</h2>
+
+	<label style="margin-left: 10px;" for="">Research Field</label>
+ 	<select style="width: 250px; height: 30px; font-size: 20px;" name="research_field_id" id="">
 		<% @research_fields.each do |research_field| %>
 		<option value="<%= research_field.id %>"><%= research_field.name %></option>
 		<% end %>
 	</select> <br>
 
-	<label for=''>Keywords</label>
-	<input type="text" name="keywords">
+	<label style="margin-left: 10px;" for=''>Keywords</label>
+	<input style="width: 250px; height: 30px; font-size: 20px;" type="text" name="keywords">
 
-	<button>Search</button>
+	<button class="button">Search</button>
 </form>
 

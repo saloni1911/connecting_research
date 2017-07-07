@@ -1,29 +1,28 @@
 <form action="/users" method="post">
+	<h1>Create New Account</h1>
+		<label for=''>Name</label>
+		<input style="width: 250px; height: 27px; font-size: 20px;" type="text" name="name"><br>
 
-	<label for=''>Name</label>
-	<input type="text" name="name"><br>
+		<label for="">Email</label>
+		<input style="width: 250px; height: 27px; font-size: 20px;" type="text" name="email"><br>
 
-	<label for="">Email</label>
-	<input type="text" name="email"><br>
+		<label for=''>Password</label>
+		<input style="width: 250px; height: 27px; font-size: 20px;" type="password" name="password"><br>
 
-	<label for=''>Password</label>
-	<input type="password" name="password"><br>
+		<label for=''>Location</label>
+		<input style="width: 250px; height: 27px; font-size: 20px;" type="text" name="location"><br>
 
-	<label for=''>Location</label>
-	<input type="text" name="location"><br>
+		<label for="">Degree</label>
+		<input style="width: 250px; height: 27px; font-size: 20px;" type="text" name="degree"><br>
 
-	<label for="">Degree</label>
-	<input type="text" name="degree"><br>
+		<label for=''>Research Institute</label>
+		<input style="width: 250px; height: 27px; font-size: 20px;" type="text" name="research_institute"><br>
 
-	<label for=''>Research Institute</label>
-	<input type="text" name="research_institute"><br>
-
-	<label for="">Research Field</label>
- 	<select name="research_field_id" id="">
-		<% @research_fields.each do |research_field| %>
-		<option value="<%= research_field.id %>"><%= research_field.name %></option>
-		<% end %>
-	</select> <br>
-	
-	<button>Create Account</button>
+		<label for="">Research Field</label>
+	 	<select style="width: 250px; height: 30px; font-size: 20px;" name="research_field_id" id="">
+			<% @research_fields.each do |research_field| %>
+			<option value="<%= research_field.id %>"><%= research_field.name %></option>
+			<% end %>
+		</select> <br>
+	<button class="button">Submit</button>
 </form>

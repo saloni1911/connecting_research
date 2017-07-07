@@ -1,10 +1,8 @@
      
 require 'sinatra'
-# require 'sinatra/reloader'
-# require 'pry'
-#require 'sendgrid-ruby'
+require 'sinatra/reloader'
+require 'pry'
 require 'pg'
-#include SendGrid
 
 require_relative 'db_config'
 require_relative 'models/user'
@@ -63,25 +61,26 @@ get '/new' do
 end
 
 post '/users' do
-	user = User.new
-	user.name = params[:name]
-	user.email = params[:email]
-	user.password = params[:password]
-	user.location = params[:location]
-	user.degree = params[:degree]
-	user.research_institute = params[:research_institute]
-	user.research_field_id = params[:research_field_id]
-	user.save
-
-	redirect '/login'
+	if @user = User.find_by(email: params[:email] = [])
+		user = User.new
+		user.name = params[:name]
+		user.email = params[:email]
+		user.password = params[:password]
+		user.location = params[:location]
+		user.degree = params[:degree]
+		user.research_institute = params[:research_institute]
+		user.research_field_id = params[:research_field_id]
+		user.save
+		redirect '/login'
+	else redirect '/login'
+	end
 end
 
 get '/users' do
-	# @users = User.all
 	@user = User.find(session[:user_id])
-	#@publications = Publication.all
 	@publications = Publication.where(user_id: session[:user_id])
 	@research_fields = ResearchField.all
+	@comments = Comment.where(user_id: session[:user_id])
 	erb :users
 end
 
@@ -103,10 +102,30 @@ post '/publications' do
 end
 
 get '/search' do
-	# @user = User.where(research_field_id: params[:research_field_id])
-	# @publications = Publication.where("title LIKE ?", "%#{params[:keywords]}%")
-@publications = Publication.joins(:user => :research_field).where("title LIKE ?", "%#{params[:keywords]}%").where("research_fields.id = ?", params[:research_field_id])
+	@publications = Publication.joins(:user => :research_field).where("title LIKE ?", "%#{params[:keywords]}%").where("research_fields.id = ?", params[:research_field_id])
 	erb :search
+end
+
+delete '/users/:id' do
+	user = User.find(session[:user_id])
+	publications = Publication.where(user_id: session[:user_id])
+	user.destroy
+	publications.each do |publication|
+	publication.destroy
+	end
+	redirect '/'
+end
+
+post '/comments/:id' do
+	# comment = Comments.find(user_id: params[:user_id])
+	comment = Comment.new
+	comment.body = params[:body]
+	comment.user_id = params[:id]
+	comment.session_id = session[:user_id]
+	comment.save
+	@user = User.find(params[:id])
+	@publications = Publication.where(user_id: params[:id])
+	erb :display
 end
 
 get '/users/:id' do
@@ -134,45 +153,6 @@ patch '/users' do
 
 	redirect '/users'
 end
-
-delete '/users/:id' do
-	user = User.find(session[:user_id])
-	publications = Publication.where(user_id: session[:user_id])
-	user.destroy
-	publications.each do |publication|
-		publication.destroy
-	end
-	redirect '/'
-end
-
-# get '/messages' do
-# 	# sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
-# 	# response = sg.client.mail._('send').post(request_body: mail.to_json)
-	
-# 	# from = Email.new(email: 'saloni.1911@gmail.com')
-# 	# to = Email.new(email: 'akashrtulsiyan@gmail.com')
-# 	# subject = 'Sending with SendGrid is Fun'
-# 	# content = Content.new(type: 'cfjnklm;;lmknhj;n', value: 'and easy to do anywhere, even with Ruby')
-# 	from = Email.new(email: params[session[:user_id]])
-# 	to = Email.new(email: params[:id])
-# 	subject = "#{params[:subject]}"
-# 	content = Content.new(type: params[:content])
-# 	mail = Mail.new(from, subject, to, content)
-
-# 	sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-# 	response = sg.client.mail._('send').post(request_body: mail.to_json)
-# 	puts response.status_code
-# 	puts response.body
-# 	puts response.headers
-# 	# from = mail.from['email']
-# 	# subject = mail.subject
-# 	# to = mail.personalizations[0]['to'][0]['email']
-# 	# content = mail.contents[0]['type']
-
-# erb :display
-# end
-
-
 
 
 

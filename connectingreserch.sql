@@ -9,15 +9,12 @@ CREATE TABLE users(
 	research_field_id INTEGER
 );
 
--- INSERT INTO dishes(name, image_url) VALUES ('pudding', 'https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1270451_8.jpg?itok=6raGNNjr');
--- INSERT INTO dishes(name, image_url) VALUES ('cake', 'https://www.puregelato.com.au/images/cake/Choc-Drip-Gelato-Cake.jpg');
-
 CREATE TABLE comments(
 	id SERIAL4 PRIMARY KEY,
 	body TEXT,
-	publication_id INTEGER
+	user_id INTEGER
 );
--- dish_id in this table is primary key in above table-->
+ALTER TABLE comments ADD COLUMN session_id INTEGER;
 
 CREATE TABLE publications(
 	id SERIAL4 PRIMARY KEY,

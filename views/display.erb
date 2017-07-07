@@ -1,30 +1,21 @@
 <h1>Profile</h1>
 
-	<h2>Name: <%= @user['name'] %></h2>
-	<h2>Email Address: <%= @user['email'] %></h2>
-	<h2>Location: <%= @user['location'] %></h2>
-	<h2>Degree: <%= @user['degree'] %></h2>
-	<h2>Research Institute: <%= @user['research_institute'] %></h2>
-	<h2>Research Field: <%= @user.research_field_name %></h2>
+	<h2 class="h2">Name: <span id="user"><%= @user['name'] %></span></h2>
+	<h2 class="h2">Email Address: <span id="user"><%= @user['email'] %></span></h2>
+	<h2 class="h2">Location: <span id="user"><%= @user['location'] %></span></h2>
+	<h2 class="h2">Degree: <span id="user"><%= @user['degree'] %></span></h2>
+	<h2 class="h2">Research Institute: <span id="user"><%= @user['research_institute'] %></span></h2>
+	<h2 class="h2">Research Field: <span id="user"><%= @user.research_field_name %></span></h2>
 
-<h3>Publications</h3>
+<h2 class="h2">Publications</h2>
 	<% @publications.each do |publication| %>
-		<ul> <li><a href="<%= publication['url'] %>"><%= publication['title'] %></a>
-		<p><%= publication['authors'] %>  <%= publication['journal_name'] %>, <%= publication['publication_date'] %></p></li></ul>
+		<ul> <li class="publish"><a href="<%= publication['url'] %>"><%= publication['title'] %></a>
+		<%= publication['authors'] %>.  <%= publication['journal_name'] %>,  <%= publication['publication_date'] %>.</li></ul>
 <% end %>
 
-	<form action="/comments" method="post">
+	<form action="/comments/<%= @user['id'] %>" method="post">
 		<label for="">Comment</label><br>
-		<textarea name="body"></textarea> 
-		<button>Post</button> 
+		<textarea style="font-size: 20px;" name="body"></textarea> 
+		<button class="button">Post</button> 
 	</form>
 
-<form action="/messages">
-	<h4>Send Personalised messages to author</h4>
-	<label for=''>Subject</label>
-	<input type="text" name="subject"><br>
-
-	<label for=''>Message</label><br>
-	<textarea name="content"></textarea> <br>
-	<button>Send</button>
-</form>

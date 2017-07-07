@@ -4,24 +4,19 @@
   <meta charset="UTF-8">
   <title>Hello World</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
-  
+
 </head>
+
 <body>
-
-
-<% if logged_in? %>
-	
-	Logged in as <%= current_user.email %>
-	<form action="/session" method="post">
+	<% if logged_in? %>
+	<div>	Logged in as <%= current_user.email %>
+		<form action="/session" method="post">
 		<input type='hidden' name="_method" value="delete">
-	  <button>Logout</button>
-	</form>
-
+	  <button id="log">Logout</button></div>
+		</form>
 	<% else %>
-	<a href="/login">login</a> 
+	<a class="control" href="/">Login</a>
 	<% end %>
-
-
-  <%= yield %>
+ <%= yield %>
 
 </body>
