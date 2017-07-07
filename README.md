@@ -1,5 +1,8 @@
 # Connecting Researchers
 
+### Wireframe: 
+![alt text](/WIREFRAME.jpg)
+
 ## Technologies Used -
 1. HTML
 2. CSS
@@ -27,6 +30,8 @@ b. They can edit their profile (all columns in their profile).
 c. They can delete their profile.
 d. They can search for other's publications by selecting research field and proving keyword for their search. By clicking on search button, they will be routed to other page showing all matched results with the name of the author of that publication.
 e. User who is searching can click on publication link to read whole publication and can also click on author name to visit their profile.
+f. User can add comment to other's publication.
+g. Only author of publication can see the comments send by others, so they authors received personalised messages in this way.
 5. User can logout any time using logout button at the top right hand side corner.
 
 ### Using ActiveRecord:
