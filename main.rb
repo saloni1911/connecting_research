@@ -1,6 +1,6 @@
      
 require 'sinatra'
-#require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require 'pry'
 require 'pg'
 
@@ -61,7 +61,6 @@ get '/new' do
 end
 
 post '/users' do
-	if @user = User.find_by(email: params[:email] = [])
 		user = User.new
 		user.name = params[:name]
 		user.email = params[:email]
@@ -71,9 +70,7 @@ post '/users' do
 		user.research_institute = params[:research_institute]
 		user.research_field_id = params[:research_field_id]
 		user.save
-		redirect '/login'
-	else redirect '/login'
-	end
+		redirect '/'
 end
 
 get '/users' do
